@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+
+@keyframes rainbow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rainbow-spin {
+  animation: rainbow-spin 4s linear infinite;
+}
