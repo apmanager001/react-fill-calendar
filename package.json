@@ -1,6 +1,6 @@
 {
   "name": "react-fill-calendar",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Fill dates on a calendar displaying boxes for dates. Customize colors and borders. Perfect for habit tracking or event marking in React applications.",
   "main": "dist/index.umd.cjs",
   "module": "dist/index.js",

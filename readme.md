@@ -22,8 +22,14 @@ A lightweight, customizable React calendar component that automatically fills an
 
 `npm install react-fill-calendar`
 
-
 ### Example
+
+<div style="display: flex; gap: 20px; justify-content: center;">
+    <div style="display: flex; justify-content: space-around"> <img src="https://github.com/apmanager001/react-fill-calendar/blob/main/assets/calendar.png?raw=true" width="300" alt='image of component'/>
+    </div>
+    <div style="display: flex; justify-content: space-around"> <img src="https://github.com/apmanager001/react-fill-calendar/blob/main/assets/calendar2.png?raw=true" width="300" alt='image of component'/>
+    </div>
+</div>
 
 ``` 
     import Calendar from 'react-fill-calendar'
@@ -65,14 +71,15 @@ A lightweight, customizable React calendar component that automatically fills an
 
 ## Props
 
-| Prop              | Type       | Required | Default     | Description |
-|-------------------|------------|----------|-------------|-------------|
-| `fillingColor`     | `string`   | No       | `"#50C878"` | Background color used to fill selected or marked dates. |
-| `borderfillColor`  | `string`   | No       | `"#27592D"` | Border color applied to filled date cells. |
-| `title`            | `string`   | No       | `"Calendar"` | Title displayed above the calendar. |
-| `hoverborderColor` | `string`   | No       | `"#FFCCCB"` | Border color applied when hovering over a date cell. |
-| `cellColor`        | `string`   | No       | `"#ADADAD"` | Background color for unfilled date cells. |
-| `cellBorderColor`  | `string`   | No       | `"#808080"` | Border color for unfilled date cells. |
-| 'mainBorder'      |   `boolean`  |No      |  `true`      |  Removes border and shadow for calendar |
-| 'borderColor'     |  `string`    | No      |  `"#708090"`| Changes color of calendar border |   
-| `legend`           | `boolean`  | No       | `true`      | Toggles the display of the legend explaining filled vs. unfilled dates. |
+| Prop              | Type       | Required | Default     | Options               | Description |
+|-------------------|------------|----------|-------------|------------------------|-------------|
+| `fillingColor`     | `string`   | No       | `"#50C878"` | —                      | Background color used to fill selected or marked dates. |
+| `borderfillColor`  | `string`   | No       | `"#27592D"` | —                      | Border color applied to filled date cells. |
+| `title`            | `string`   | No       | `"Calendar"` | —                      | Title displayed above the calendar. |
+| `hoverborderColor` | `string`   | No       | `"#FFCCCB"` | —                      | Border color applied when hovering over a date cell. |
+| `cellColor`        | `string`   | No       | `"#ADADAD"` | —                      | Background color for unfilled date cells. |
+| `cellBorderColor`  | `string`   | No       | `"#808080"` | —                      | Border color for unfilled date cells. |
+| `mainBorder`       | `boolean`  | No       | `true`      | —                      | Removes border and shadow for the calendar. |
+| `borderColor`      | `string`   | No       | `"#708090"` | —                      | Changes color of the calendar border. |
+| `cellShape`        | `string`   | No       | `"square"`  | `"square"`, `"circle"` | Shape of each calendar cell. |
+| `legend`           | `boolean`  | No       | `true`      | —                      | Toggles the display of the legend explaining filled vs. unfilled dates. |

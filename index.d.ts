@@ -14,6 +14,7 @@ export interface CalendarProps {
   textColor?: string;
   selectedDates?: CalendarSelectedDate[];
   title?: string;
+  cellShape?: string;
 }
 
 /**

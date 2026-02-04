@@ -18,6 +18,7 @@ const Calendar = ({
   textColor = "#708090",
   selectedDates = [],
   title = "Calendar",
+  cellShape = "square",
 }) => {
   const today = new Date();
 
@@ -81,7 +82,7 @@ const Calendar = ({
   for (let i = 0; i < days.length; i += chunkSize) {
     rows.push(days.slice(i, i + chunkSize));
   }
-
+const rounded = cellShape === "square" ? "rounded-md" : "rounded-full";
   return (
     <div
       className={`inline-flex flex-col gap-2 p-3 rounded-xl ${mainBorder ? `border shadow-sm` : ""} `}
@@ -108,7 +109,7 @@ const Calendar = ({
                   borderRadius: "0.5rem",
                 }}
               />
-              <div className="relative flex items-center justify-center w-4 h-4 rounded-md p-[2px]">
+              <div className={`relative flex items-center justify-center w-4 h-4 rounded-md p-[2px]`}>
                 <button
                   type="button"
                   className={`flex items-center justify-center w-full h-full rounded-md border-2 border-transparent transition-colors duration-150`}
@@ -124,7 +125,7 @@ const Calendar = ({
           <div className="flex items-center gap-2 font-semibold">
             <button
               type="button"
-              className="flex items-center justify-center w-4 h-4 rounded-md border-2 border-emerald-600 transition-colors duration-150"
+              className={`flex items-center justify-center w-4 h-4 ${rounded} border-2 border-emerald-600 transition-colors duration-150`}
               style={{
                 backgroundColor: fillingColor,
                 borderColor: borderfillColor,
@@ -158,6 +159,7 @@ const Calendar = ({
                     cellColor={cellColor}
                     isSelected={day.isSelected}
                     day={formatted}
+                    cellShape={cellShape}
                   />
                 </div>
               );
