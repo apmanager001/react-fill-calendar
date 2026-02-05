@@ -6,9 +6,18 @@ import './globals.css';
 import Calendar from '../index.jsx';
 
 function App() {
+  const selectedDates = [
+    { day: "2026-01-31", 
+      href: "/journal/1234567" 
+    },
+    {
+      day: "2026-02-01",
+      href: "/journal/february"
+    }
+  ];
   return (
     <div>
-      <Calendar />
+      <Calendar selectedDates={selectedDates} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export type CalendarSelectedDate = string | { day: string };
+export type CalendarSelectedDate = string | { day: string; href?: string };
 
 export interface CalendarProps {
   fillingColor?: string;

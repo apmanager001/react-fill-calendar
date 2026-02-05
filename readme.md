@@ -1,6 +1,5 @@
 ![NPM Version](https://img.shields.io/npm/v/react-fill-calendar)
 ![NPM Downloads](https://img.shields.io/npm/dw/react-fill-calendar)
-![npm bundle size](https://img.shields.io/bundlephobia/min/react-fill-calendar)
 
 # React Filled Calendar
 
@@ -15,6 +14,7 @@ A lightweight, customizable React calendar component that automatically fills an
 - Built with React  
 - Easily styled with TailwindCSS + DaisyUI  
 - Ideal for dashboards, planners, journals, and scheduling tools  
+- Added hrefs to selected dates by passing href key shown in example
 
 ---
 
@@ -30,6 +30,7 @@ A lightweight, customizable React calendar component that automatically fills an
     <div style="display: flex; justify-content: space-around"> <img src="https://github.com/apmanager001/react-fill-calendar/blob/main/assets/calendar2.png?raw=true" width="300" alt='image of component'/>
     </div>
 </div>
+
 
 ``` 
     import Calendar from 'react-fill-calendar'
@@ -50,6 +51,7 @@ A lightweight, customizable React calendar component that automatically fills an
                 selectedDates = [
                     {
                         day: '2026-1-13',
+                        href: '/habit/1234565',
                     },
                     {
                         day: '2026-1-15',
@@ -81,5 +83,9 @@ A lightweight, customizable React calendar component that automatically fills an
 | `cellBorderColor`  | `string`   | No       | `"#808080"` | —                      | Border color for unfilled date cells. |
 | `mainBorder`       | `boolean`  | No       | `true`      | —                      | Removes border and shadow for the calendar. |
 | `borderColor`      | `string`   | No       | `"#708090"` | —                      | Changes color of the calendar border. |
+| `text color`      | `string`   | No       | `"#708090"` | —                      | Changes color of text in legend. |
+| `selectedDates`      | `array`   | No       | `[]` | —                      | Array of dates passed to fill in the cooresponding cell. Currently it requires an object for each day with "day" as the key as shown in example. The format of the day should be yyyy-mm-dd as a string |
 | `cellShape`        | `string`   | No       | `"square"`  | `"square"`, `"circle"` | Shape of each calendar cell. |
+| `column`        | `number`   | No       | `15`  | — | Number of cells in each row |
+| `legendColumn`        | `boolean`   | No       | `false`  | — | Changes orientation of legend from row to column |
 | `legend`           | `boolean`  | No       | `true`      | —                      | Toggles the display of the legend explaining filled vs. unfilled dates. |

@@ -19,11 +19,15 @@ const Calendar = ({
   selectedDates = [],
   title = "Calendar",
   cellShape = "square",
+  column = 15,
+  legendColumn = false,
 }) => {
   const today = new Date();
 
-  // Normalize selectedDates into a Set of `YYYY-MM-DD` strings so lookups are reliable.
-  const selectedSet = React.useMemo(() => {
+  // Normalize selectedDates into structures we can use for fast lookups.
+  // Supports either plain strings 'YYYY-MM-DD' or objects
+  // like { day: 'YYYY-MM-DD', href: '/journal/123' }.
+  const { selectedSet, hrefMap } = useMemo(() => {
     const normalize = (v) => {
       if (!v) return "";
       if (typeof v === "string") {
@@ -40,9 +44,25 @@ const Calendar = ({
       return "";
     };
 
-    return new Set(
-      (selectedDates || []).map((s) => normalize(s)).filter(Boolean),
-    );
+    const set = new Set();
+    const map = new Map();
+
+    for (const entry of selectedDates || []) {
+      const normalized =
+        entry && typeof entry === "object" && entry.day
+          ? normalize(entry.day)
+          : normalize(entry);
+
+      if (!normalized) continue;
+
+      set.add(normalized);
+
+      if (entry && typeof entry === "object" && entry.href) {
+        map.set(normalized, entry.href);
+      }
+    }
+
+    return { selectedSet: set, hrefMap: map };
   }, [selectedDates]);
 
   const days = useMemo(() => {
@@ -62,10 +82,12 @@ const Calendar = ({
         cursor.getDate(),
       ).padStart(2, "0")}`;
       const isSelected = selectedSet.has(key);
+      const href = hrefMap.get(key);
 
       result.push({
         key,
         isSelected,
+        href,
         // keep a Date copy in case you want to use it later
         dateObj: new Date(cursor),
       });
@@ -78,11 +100,11 @@ const Calendar = ({
 
   // Split days into rows of up to 15 cells each
   const rows = [];
-  const chunkSize = 15;
+  const chunkSize = column;
   for (let i = 0; i < days.length; i += chunkSize) {
     rows.push(days.slice(i, i + chunkSize));
   }
-const rounded = cellShape === "square" ? "rounded-md" : "rounded-full";
+  const rounded = cellShape === "square" ? "rounded-md" : "rounded-full";
   return (
     <div
       className={`inline-flex flex-col gap-2 p-3 rounded-xl ${mainBorder ? `border shadow-sm` : ""} `}
@@ -92,7 +114,7 @@ const rounded = cellShape === "square" ? "rounded-md" : "rounded-full";
     >
       {legend && (
         <div
-          className="flex justify-between text-sm"
+          className={`flex ${legendColumn ? "flex-col items-start" : "justify-between"}  text-sm`}
           style={{ color: textColor }}
         >
           <strong>{title}</strong>
@@ -109,7 +131,9 @@ const rounded = cellShape === "square" ? "rounded-md" : "rounded-full";
                   borderRadius: "0.5rem",
                 }}
               />
-              <div className={`relative flex items-center justify-center w-4 h-4 rounded-md p-[2px]`}>
+              <div
+                className={`relative flex items-center justify-center w-4 h-4 rounded-md p-[2px]`}
+              >
                 <button
                   type="button"
                   className={`flex items-center justify-center w-full h-full rounded-md border-2 border-transparent transition-colors duration-150`}
@@ -159,6 +183,7 @@ const rounded = cellShape === "square" ? "rounded-md" : "rounded-full";
                     cellColor={cellColor}
                     isSelected={day.isSelected}
                     day={formatted}
+                    href={day.href}
                     cellShape={cellShape}
                   />
                 </div>

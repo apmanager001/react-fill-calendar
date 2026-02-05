@@ -1,6 +1,6 @@
 {
   "name": "react-fill-calendar",
-  "version": "0.1.4",
+  "version": "0.1.8",
   "description": "Fill dates on a calendar displaying boxes for dates. Customize colors and borders. Perfect for habit tracking or event marking in React applications.",
   "main": "dist/index.umd.cjs",
   "module": "dist/index.js",
@@ -28,11 +28,15 @@
     "calendar",
     "components"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Robert Foley",
+  "license": "MIT",
   "peerDependencies": {
     "react": ">=17.0.0 <20.0.0",
     "react-dom": ">=17.0.0 <20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apmanager001/react-fill-calendar"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
